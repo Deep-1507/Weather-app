@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SkyCast</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <script src="code.jquery.com_jquery-3.7.1.js"></script>
+    <!-- <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>   -->
+  </head>
+  <body>
+    <nav id="navbar" class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a style="color: rgba(var(--bs-primary-rgb)); font-size: 30px; " class="navbar-brand" href="#">SkyCast</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a style="font-size: 20px; "class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a style="font-size: 20px; " class="nav-link" href="#">How to Use?</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a style="font-size: 20px; "
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                About Us
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Our Founder</a></li>
+                <li><a class="dropdown-item" href="#">Our Technology</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Apply for a Role!</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input
+            id="city"
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit" id="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 class="my-4 text-center">Weather for <span style="color: rgba(var(--bs-primary-rgb));" id="cityName"></span></h1>
+      <h2 style="text-align: center;">Today's Temperature is <span style="font-weight: bolder;" id="temp"></span>&deg;C</h2>
+      <br>
+      <h3 style="text-align: center;">Other Data for Today</h3>
+      <br>
+      <main>
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+          <div class="col">
+            <!-- For Border -->
+            <div class="card mb-4 rounded-3 shadow-sm border-primary">
+              <!-- For Bcg -->
+              <div class="card-header py-3 text-bg-primary border-primary">
+                <h4 class="my-0 fw-normal">Temperature Desription</h4>
+              </div>
+              <div class="card-body">
+                <img style="height: 100px;" src="temperature-icon-3.jpg" alt="Unable to load image">
+                <!-- <h1 class="card-title pricing-card-title">
+                  $0<small class="text-body-secondary fw-light">/mo</small>
+                </h1> -->
+                <ul style="font-size : 25px;" class="list-unstyled mt-3 mb-4">
+      
+                  <li>Maximum Temperature is &#10162; <span id="max_temp"></span></li>
+                  <li>Minimum Temperature is &#10146; <span id="min_temp"></span></li>
+                  <li>Feels Like is &#10148; <span id="feels_like"></span></li>
+                </ul>
+                <!-- <button
+                  type="button"
+                  class="w-100 btn btn-lg btn-outline-primary"
+                >
+                  Sign up for free
+                </button> -->
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm border-primary">
+              <div class="card-header py-3 text-bg-primary border-primary">
+                <h4 class="my-0 fw-normal">Sunrise & Sunset</h4>
+              </div>
+              <div class="card-body">
+                <img style="height: 100px;" src="1000_F_108352780_PK4nHOjdlZj8oBqAGqOWN7T4ojkbtkT9.jpg" alt="Unable to load image">
+                <!-- <h1 class="card-title pricing-card-title">
+                 <small class="text-body-secondary fw-light">/mo</small>
+                </h1> -->
+                <ul style="font-size : 25px;" class="list-unstyled mt-3 mb-4">
+                  <li>Sunrise is &#10140; <span id="sunrise"></span></li>
+                  <li>Sunset is &xrArr; <span id="sunset"></span></li>
+                  <li>Cloud PCT is &#8680; <span id="cloud_pct"></span></li>
+                  
+
+                </ul>
+                <!-- <button type="button" class="w-100 btn btn-lg btn-primary">
+                  Get started
+                </button> -->
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm border-primary">
+              <div class="card-header py-3 text-bg-primary border-primary">
+                <h4 class="my-0 fw-normal">Wind Speed Description</h4>
+              </div>
+              <div class="card-body">
+                <img style="height: 100px;" src="download.png" alt="Unable to load image">
+                <!-- <h1 class="card-title pricing-card-title">
+                  $29<small class="text-body-secondary fw-light">/mo</small>
+                </h1> -->
+                <ul style="font-size : 25px;" class="list-unstyled mt-3 mb-4">
+                 
+                  <li>Wind Degrees is &rArr; <span id="wind_degrees"></span></li>
+                  <li>Wind Speed is &rarr; <span id="wind_speed"></span></li>
+                  <li>Humidity is &Rarr; <span id="humidity"></span></li>
+                  
+                </ul>
+                <!-- <button type="button" class="w-100 btn btn-lg btn-primary">
+                  Contact us
+                </button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+<hr>
+<br>
+        <h2 class="display-6 text-center mb-4,card-header py-3 text-bg-primary border-primary">
+          Weather of Other Common Places
+        </h2>
+
+        <div class="table-responsive">
+          <table class="table text-center">
+            <thead>
+              <tr>
+                <th style="width: 34%"></th>
+                <th style="width: 22%">Cloud_pct</th>
+                <th style="width: 22%">Feels_like</th>
+                <th style="width: 22%">Humidity</th>
+                <th style="width: 22%">Max_temp</th>
+                <th style="width: 22%">Min_temp</th>
+                <th style="width: 22%">Sunrise</th>
+                <th style="width: 22%">Sunset</th>
+                <th style="width: 22%">Temp</th>
+                <th style="width: 22%">Wind_degrees</th>
+                <th style="width: 22%">Wind_speed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" class="text-start">Delhi</th>
+                <script>getWeather("Delhi")</script>
+                <td><span id="cloud_pct2"></span></td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start">Mumbai</th>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+              </tr>
+            </tbody>
+
+            <tbody>
+              <tr>
+                <th scope="row" class="text-start">Seatle</th>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start">Dubai</th>
+        
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start">London</th>
+    
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <th scope="row" class="text-start">Qatar</th>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+<!-- Footer -->
+<div class="footer1">
+  <br />
+  <hr />
+
+<h6 style="text-align: center;">Headon to the
+  <a style="text-decoration: none; color: rgba(var(--bs-primary-rgb))" href="#navbar">
+    Navigation Menu</a
+  >
+  for more!</h6>
+  
+</div>
+<h6 style="text-align: center;">
+  <a style="text-decoration: none; color: rgba(var(--bs-primary-rgb))" href="index.html"
+    >Click here</a
+  >
+  to land at Home Page
+</h6>
+
+<h6 style="text-align: center;">&#169; Copyright 2023 SkyCast Weather Info Pvt. Ltd. All Rights Reserved.</h6>
+
+<hr />
+<h6 style="text-align: center;">
+  Made with <span class="emoji">&#128170;</span> by Deependra Kumar
+<h6>
+<br />
+
+<script>
+  var loader = document.getElementById("preloader");
+  window.addEventListener("load", function () {
+    loader.style.display = "none";
+  });
+</script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script2.js"></script>
+  </body>
+</html>
