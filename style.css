@@ -1,0 +1,16 @@
+#submit{
+    color:white;
+      margin-left: 572px; 
+      height: 50px;
+      width:326px; 
+      font-size: 25px;
+       background-color: rgba(var(--bs-primary-rgb));
+}
+#submit:hover{
+    background-color: white;
+color: rgba(var(--bs-primary-rgb));
+}
+
+#city{
+    font-size: 25px;
+}
